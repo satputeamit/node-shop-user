@@ -1,0 +1,12 @@
+# ADD USER
+POST http://localhost:3001/adduser
+Content-Type: application/json
+
+{
+    "f_name":"amit2",
+    "l_name":"s",
+    "address":"sangli2",
+    "email":"a@s.com",
+    "contact":"9876543210",
+    "password":"123456"
+}
