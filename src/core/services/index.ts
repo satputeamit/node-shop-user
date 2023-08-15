@@ -9,8 +9,7 @@ export async function addUser(userObj: User): Promise<any> {
     if (password) {
         const findEmail = await knex.select("*").from("users").where("email", userObj.email);
         const findContact = await knex.select("*").from("users").where("contact", userObj.contact);
-        console.log(findEmail)
-        console.log(findContact)
+        
         if (findEmail.length > 0 || findContact.length > 0) {
             return {
                 message: "User already exists...",
@@ -47,7 +46,6 @@ export async function login(userObj: UserLogin): Promise<any> {
             }
             const secret = process.env.SECRET ? process.env.SECRET : ""
             const token = jwt.sign(data, secret)
-            console.log(data)
             return {
                 ...data,
                 token
