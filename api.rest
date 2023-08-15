@@ -5,8 +5,19 @@ Content-Type: application/json
 {
     "f_name":"amit2",
     "l_name":"s",
-    "address":"sangli2",
-    "email":"a@s.com",
-    "contact":"9876543210",
-    "password":"123456"
+    "address":"sangli",
+    "email":"a@soo.com",
+    "contact":"987654325",
+    "password":"hello"
+}
+
+###
+
+# LOGIN
+POST http://localhost:3001/login
+Content-Type: application/json
+
+{   
+    "email":"a@soo.com",  
+    "password":"hello"
 }

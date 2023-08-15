@@ -1,4 +1,4 @@
-import { addUser } from "../../core/services";
+import { addUser , login} from "../../core/services";
 import { Request, Response, NextFunction } from "express";
 
 export async function addNewUser(
@@ -7,5 +7,14 @@ export async function addNewUser(
   next: NextFunction
 ): Promise<void> {
   const data = await addUser(req.body);
+  res.json(data);
+}
+
+export async function loginUser(
+  req: Request,
+  res: Response,
+  next: NextFunction
+): Promise<void> {
+  const data = await login(req.body);
   res.json(data);
 }

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate": "export $(cat .env) && npx knex migrate:latest --knexfile=src/database/knexfile.ts",
     "dev": "export $(cat .env) && ts-node-dev --respawn src/app/index.ts"
   },
   "repository": {
@@ -22,6 +23,7 @@
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
+    "@types/jsonwebtoken": "^9.0.2",
     "@types/knex": "^0.16.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.1.6"
