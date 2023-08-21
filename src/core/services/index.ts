@@ -9,7 +9,7 @@ export async function addUser(userObj: User): Promise<any> {
     if (password) {
         const findEmail = await knex.select("*").from("users").where("email", userObj.email);
         const findContact = await knex.select("*").from("users").where("contact", userObj.contact);
-        
+
         if (findEmail.length > 0 || findContact.length > 0) {
             return {
                 message: "User already exists...",
@@ -34,12 +34,13 @@ export async function addUser(userObj: User): Promise<any> {
 }
 
 export async function login(userObj: UserLogin): Promise<any> {
-    const user = await knex.select("*").from("users").where("email", userObj.email)    
+    const user = await knex.select("*").from("users").where("email", userObj.email)
     if (user.length > 0) {
-        const isValid = bcrypt.compareSync(userObj.password,user[0].password);
-        
+        const isValid = bcrypt.compareSync(userObj.password, user[0].password);
+
         if (isValid) {
             const data = {
+                id: user[0].id,
                 first_name: user[0].fName,
                 last_name: user[0].lName,
                 email: user[0].email,
@@ -61,4 +62,12 @@ export async function login(userObj: UserLogin): Promise<any> {
 
 }
 
+export async function validateUser(userId: string): Promise<any> {
+    const user = await knex.select("*").from("users").where("id", userId)
+    if (user.length > 0) {
+        return { status: true }
+    }
+    return { status: false }
+
+}
 // Update, delete, logout

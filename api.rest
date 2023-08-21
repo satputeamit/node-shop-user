@@ -21,3 +21,8 @@ Content-Type: application/json
     "email":"a@soo.com",  
     "password":"hello"
 }
+
+###
+
+# Validate
+GET http://localhost:3001/validate/e8734c48-aa94-4143-8374-75d92eca4bd2
